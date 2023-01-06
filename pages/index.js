@@ -2,31 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import Header from "../components/Header/header";
-import { parseProperties } from "../api/utils/parse-properties";
-import { queryDatabase } from '../api/query-database';
-import { useEffect, useState } from "react";
-
-
-// const [ articles , setArticles ] = useState([]);
-
-
-// async function getStaticProps() {
-//   const database = await queryDatabase();
-//   const posts = parseProperties(database);
-//   console.log(posts)
-  
-// }
-
-
-
 
 export default function Home() {
-
-  // useEffect(() => {
-  //   getStaticProps()
-  // });
-  
-
   return (
     <>
       <Head>
@@ -34,7 +11,11 @@ export default function Home() {
         <meta name="description" content="Cinema Monkeys" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@100;200;300;400;500;700;800;900&display=swap"
           rel="stylesheet"
@@ -43,7 +24,6 @@ export default function Home() {
       </Head>
       <Header />
       <main className={styles.main}>
-
         <div className={styles.grid}>
           <Link href="/1" className={styles.card}>
             <h2>
