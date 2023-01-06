@@ -1,24 +1,18 @@
 import Head from "next/head";
-import Image from "next/image";
+
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
-import useSWR from "swr";
 import Link from "next/link";
 
-//Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
-  //Set up SWR to run the fetcher function when calling "/api/staticdata"
-  //There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
-  const { data, error } = useSWR("/api/staticdata", fetcher);
+  const { Client } = require("@notionhq/client");
 
-  //Handle the error state
-  if (error) return <div>Failed to load</div>;
-  //Handle the loading state
-  if (!data) return <div>Loading...</div>;
+  // Initializing a client
+  const notion = new Client({
+    auth: process.env.NOTION_TOKEN,
+  });
+
+  
 
   return (
     <>
@@ -30,66 +24,20 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.grid}>
-          {/* {data.posts.map((place) => {
-            console.log(place);
-          })} */}
-
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span> Name: {data.posts}
+          <Link href="/1" className={styles.card}>
+            <h2>
+              பள்ளி மைதானத்தில் சுழன்றடித்துச் சூறாவளி , சுழல் காற்றில் சிக்கி
+              வீடுகள் உள்ளிட்ட கட்டிடங்கள் சேதம்
             </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
+            <p>
+              அமெரிக்காவின் ஆர்கன்சாஸ் மாகாணத்தில் உள்ள ஹாட் ஸ்பிரிங்ஸ் சிட்டி
+              பள்ளி மைதானத்தில் சக்திவாய்ந்த சூறாவளி சுழன்றடித்துச் சென்ற
+              சிசிடிவி காட்சிகள் வெளியாகி உள்ளன. கருமேகக் கூட்டங்களுக்கு
+              மத்தியில் கனமழையுடன் தோன்றிய சுழல்காற்றில் சிக்கி வீடுகள் உள்ளிட்ட
+              கட்டிடங்கள், மரங்கள், மின் கம்பங்கள் என அனைத்தும் துவம்சம்
+              செய்யப்பட்டன.
             </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+          </Link>
         </div>
       </main>
     </>
