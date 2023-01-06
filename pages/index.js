@@ -1,20 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import useSWR from 'swr';
-import Link from 'next/link';
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import styles from "../styles/Home.module.css";
+import useSWR from "swr";
+import Link from "next/link";
 
 //Write a fetcher function to wrap the native fetch function and return the result of a call to url in json format
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-    //Set up SWR to run the fetcher function when calling "/api/staticdata"
+  //Set up SWR to run the fetcher function when calling "/api/staticdata"
   //There are 3 possible states: (1) loading when data is null (2) ready when the data is returned (3) error when there was an error fetching the data
-  const { data, error } = useSWR('/api/staticdata', fetcher);
+  const { data, error } = useSWR("/api/staticdata", fetcher);
 
   //Handle the error state
   if (error) return <div>Failed to load</div>;
@@ -30,13 +29,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-
-
-  
-
-
-
         <div className={styles.grid}>
+          {/* {data.posts.map((place) => {
+            console.log(place);
+          })} */}
+
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             className={styles.card}
@@ -44,7 +41,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={inter.className}>
-              Docs <span>-&gt;</span> Name: {data}
+              Docs <span>-&gt;</span> Name: {data.posts}
             </h2>
             <p className={inter.className}>
               Find in-depth information about Next.js features and&nbsp;API.
@@ -96,5 +93,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
