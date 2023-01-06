@@ -3,7 +3,8 @@
     width: 100%;
     font-size: 2rem;
     border-bottom:3px solid  rgb(75, 166, 252);
-    background: white;
+    background: rgba(var(--callout-rgb),0);
+    backdrop-filter: blur(5px);
     padding: 0.5% 0 ;
     position: fixed;
     z-index: 5;
