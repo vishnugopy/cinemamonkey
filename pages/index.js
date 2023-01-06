@@ -5,14 +5,6 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 
 export default function Home() {
-  const { Client } = require("@notionhq/client");
-
-  // Initializing a client
-  const notion = new Client({
-    auth: process.env.NOTION_TOKEN,
-  });
-
-  
 
   return (
     <>
