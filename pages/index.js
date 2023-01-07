@@ -10,21 +10,25 @@ import { db } from "./api/firebase";
 export default function Home() {
   const [postsList, setPostsList] = useState([]);
   const postCollectionref = collection(db, "posts");
-  
+
   
   useEffect(() => {
     const getPosts = async () => {
+      console.log("1");
       const data = await getDocs(postCollectionref);
       setPostsList(
         data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
+          ...doc.data(), id:doc.id
         }))
-      );
+       )
     };
 
-    getPosts();
-  });
+    getPosts()
+  }, []);
+  
+   
+
+   
 
   return (
     <>
@@ -47,23 +51,14 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <div className={styles.grid}>
-
-
-          {
-            postsList.map(
-              (post) => {
-                return <Link href={`/${post.id}`} className={styles.card}>
-                <h2>
-                 {post.title}
-                </h2>
-                <p>
-                {post.content}
-                </p>
+          {postsList.map((post) => {
+            return (
+              <Link key={post.id} href={`/${post.id}`} className={styles.card}>
+                <h2>{post.title}</h2>
+                <p>{post.content}</p>
               </Link>
-              }
-            )
-          }
-         
+            );
+          })}
         </div>
       </main>
     </>
