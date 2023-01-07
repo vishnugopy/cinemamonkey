@@ -1,11 +1,27 @@
 .header{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    font-size: 2rem;
-    border-bottom:3px solid  rgb(75, 166, 252);
+    border-bottom:0.5px solid  rgb(0, 0, 0);
     background: rgba(var(--callout-rgb),0);
     backdrop-filter: blur(5px);
-    padding: 0.5% 0 ;
     position: fixed;
     z-index: 5;
+}
+
+
+.headerDiv{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .loginButton{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #004E97;
 }
