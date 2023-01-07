@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function NewsPage() {
   const [article, setArticle] = useState([]);
-  console.log(article);
+
 
   const router = useRouter()
   const { id } = router.query
@@ -14,7 +14,6 @@ export default function NewsPage() {
 
   useEffect(() => {
     const getAPosts = async () => {
-      console.log("1");
       const docSnap = await getDoc(docRef);
       setArticle(docSnap._document.data.value.mapValue.fields);
     };
