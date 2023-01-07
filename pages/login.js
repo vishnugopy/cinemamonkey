@@ -1,4 +1,4 @@
-import styles from "../styles/News.module.css";
+import styles from "../styles/Create.module.css";
 import { auth, provider } from "./api/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/router";
@@ -16,8 +16,8 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
-      <section>
-        <p>ijgsiudishbk</p>
+      <section className={styles.login}>
+        <p>Welcome ! Log in if your can right news in tamil</p>
         <button className="login-with-google-btn" onClick={loginWithGoogle}>
           LOG IN
         </button>

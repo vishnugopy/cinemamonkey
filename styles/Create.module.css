@@ -47,6 +47,22 @@
     cursor: pointer;
 }
 
+.login{
+    font-size: 1.5rem;
+}
+
+.login button {
+    margin: 0 auto;
+    font-size: 1.5rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    outline: none;
+    background: rgb(0, 183, 255);
+    border:none;
+    cursor: pointer;
+}
+
 
 
 @media (max-width: 700px) {
