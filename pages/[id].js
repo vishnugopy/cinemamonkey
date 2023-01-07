@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 
 export default function NewsPage() {
   const [article, setArticle] = useState([]);
-
-
   const router = useRouter()
   const { id } = router.query
   const docRef = doc(db, "posts", id);
@@ -25,10 +23,10 @@ export default function NewsPage() {
     <main className={styles.main}>
       <section>
         <h1>
-          {article.title && article.title.stringValue}
+          {article.title ? article.title.stringValue : ""}
         </h1>
         <p>
-        {article.content && article.content.stringValue}
+        {article.content ? article.content.stringValue : ""}
         </p>
       </section>
     </main>
