@@ -5,12 +5,18 @@
   --max-width: 1100px;
   --border-radius: 12px;
   --foreground-rgb: 0, 0, 0;
-  --accent-color:#004E97;
+  --accent-color: #004e97;
+  --black: #000;
+  --white: #fff;
+  --black-half : rgba(0, 0, 0, 0.5);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
+    --black: rgb(255, 255, 255);
+    --white: rgb(13, 13, 13);
+    --black-half : rgba(255, 255, 255, 0.5);
   }
 }
 
