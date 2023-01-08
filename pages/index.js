@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header/header";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/home.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getDocs } from "firebase/firestore";
@@ -45,12 +45,15 @@ export default function Home() {
         <div className={styles.container}>
           {postsList.map((post) => {
             return (
-              <Link className={styles.cards} key={post.id} href={`/${post.id}`} >
+              <Link  key={post.id} href={`/${post.id}`} >
+                <div className={styles.cards}>
                 <h2>{post.title}</h2>
                 <div className={styles.author}>
                   <p>V G</p>
                   <p>12/01/2023</p>
                 </div>
+                </div>
+                
               </Link>
             );
           })}

@@ -5,6 +5,7 @@
   --max-width: 1100px;
   --border-radius: 12px;
   --foreground-rgb: 0, 0, 0;
+  --accent-color:#004E97;
 }
 
 @media (prefers-color-scheme: dark) {
