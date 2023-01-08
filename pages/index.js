@@ -6,13 +6,6 @@ import { useEffect, useState } from "react";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
 import { db } from "./api/firebase";
-import { Roboto } from '@next/font/google'
-
-const roboto = Roboto({
-  weight: '400',
-  subsets: ['latin'],
-})
-
 
 export default function Home() {
   const [postsList, setPostsList] = useState([]);
@@ -49,7 +42,7 @@ export default function Home() {
                 <div className={styles.cards}>
                 <h2>{post.title}</h2>
                 <div className={styles.author}>
-                  <p>V G</p>
+                  <p>{post.author.name}</p>
                   <p>12/01/2023</p>
                 </div>
                 </div>
