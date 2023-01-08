@@ -1,7 +1,8 @@
-import styles from "../styles/Create.module.css";
+import styles from "../styles/create.module.css";
 import { auth, provider } from "./api/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function Login() {
   const router = useRouter();
@@ -10,17 +11,21 @@ export default function Login() {
     signInWithPopup(auth, provider).then((result) => {
       alert("ok");
       localStorage.setItem("isAuth", true);
-      router.push("/create")
+      router.push("/create");
     });
   };
 
   return (
     <main className={styles.main}>
       <section className={styles.login}>
-        <p>Welcome ! Log in if your can right news in tamil</p>
-        <button className="login-with-google-btn" onClick={loginWithGoogle}>
-          LOG IN
-        </button>
+        <Image
+          className={styles.decoLogo}
+          src="Logo.svg"
+          alt="Logo of Cinema Monkeys"
+          width={300}
+          height={300}
+        />
+        <button onClick={loginWithGoogle}>LOG IN</button>
       </section>
     </main>
   );
