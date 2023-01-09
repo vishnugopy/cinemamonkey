@@ -20,7 +20,7 @@ export default function Header() {
       <Link href={"/login"}>
       <Image
         className={styles.loginButton}
-          src="./avatar.svg" 
+          src="avatar.svg" 
           alt="Profile of Cinema Monkeys"
           width={80}
           height={60}
