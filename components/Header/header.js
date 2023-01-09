@@ -10,7 +10,7 @@ export default function Header() {
         <Link href={"/"}>
         <Image
         className={styles.logo}
-          src="Logo.svg" 
+          src="logo.svg" 
           alt="Logo of Cinema Monkeys"
           width={80}
           height={60}
@@ -20,7 +20,7 @@ export default function Header() {
       <Link href={"/login"}>
       <Image
         className={styles.loginButton}
-          src="avatar.svg" 
+          src="profile.svg" 
           alt="Profile of Cinema Monkeys"
           width={50}
           height={50}
