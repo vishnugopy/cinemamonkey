@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import styles from "../styles/News.module.css";
+import styles from "../styles/news.module.css";
 import { db } from "./api/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";

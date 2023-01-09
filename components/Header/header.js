@@ -22,8 +22,8 @@ export default function Header() {
         className={styles.loginButton}
           src="avatar.svg" 
           alt="Profile of Cinema Monkeys"
-          width={80}
-          height={60}
+          width={50}
+          height={50}
         />
       </Link>
         </div>
