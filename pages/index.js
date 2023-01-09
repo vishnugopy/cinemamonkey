@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header/header";
+import Footer from "../components/Footer/footer";
 import styles from "../styles/home.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -52,6 +53,7 @@ export default function Home() {
           })}
         </div>
       </main>
+        <Footer/>
     </>
   );
 }
