@@ -5,30 +5,31 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 export default function NewsPage() {
-  // const [article, setArticle] = useState([]);
-  // const router = useRouter()
-  // const { id } = router.query
-  // const docRef = doc(db, "posts", id);
+  const [article, setArticle] = useState([]);
+  const router = useRouter()
+  const { id } = router.query
+  const docRef = doc(db, "posts", id);
 
-  // useEffect(() => {
-  //   const getAPosts = async () => {
-  //     const docSnap = await getDoc(docRef);
-  //     setArticle(docSnap._document.data.value.mapValue.fields);
-  //   };
+  useEffect(() => {
+    const getAPosts = async () => {
+      const docSnap = await getDoc(docRef);
+      setArticle(docSnap._document.data.value.mapValue.fields);
+    };
 
-  //   getAPosts();
-  // }, []);
+    getAPosts();
+  }, []);
 
   return (
     <main className={styles.main}>
-      <section>
-        HI
-        {/* <h1>
+      <section className={styles.news}>
+        <h1>
           {article.title ? article.title.stringValue : ""}
         </h1>
         <p>
         {article.content ? article.content.stringValue : ""}
-        </p> */}
+        </p>
+
+        <button onClick={() => router.back()}>Go Back</button>
       </section>
     </main>
   );

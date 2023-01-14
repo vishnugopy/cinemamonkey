@@ -7,9 +7,11 @@ import { useRouter } from "next/router";
 export default function CreatePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [ link , setLink] = useState("");
+  const [ links , setLinks] = useState([])
   const router = useRouter();
 
-  console.log(title, content);
+  console.log(links);
 
   const postCollectionref = collection(db, "posts");
 
@@ -17,12 +19,18 @@ export default function CreatePage() {
     await addDoc(postCollectionref, {
       title: title,
       content: content,
+      links : links,
       author: {
         name: auth.currentUser.displayName,
         id: auth.currentUser.uid,
       },
     }).then(router.push("/"));
   };
+
+  const AddToLink = () => {
+    links.push(link);
+    setLink("");
+  }
 
   return (
     <main className={styles.main}>
@@ -44,6 +52,29 @@ export default function CreatePage() {
             setContent(e.target.value);
           }}
         />
+        <label>Link</label>
+        <input
+          placeholder="Link"
+          type="text"
+          value={link}
+          onChange={(e) => {
+            setLink(e.target.value);
+          }}
+        />
+         <ul className={styles.links}>
+        {
+          links.map((link, index) => {
+            return (
+              <li key={index}>
+                {link}
+              </li>
+           );
+          })}
+        </ul>
+         <button className="post" onClick={AddToLink}>
+          Add Link
+        </button>
+       
         <button className="post" onClick={CreatePost}>
           Post
         </button>
