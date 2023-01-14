@@ -26,15 +26,17 @@ export default function CreatePage() {
 
   return (
     <main className={styles.main}>
-      <div onClick={() => router.back()}>Go Back</div>
       <section className={styles.form}>
+        <button onClick={() => router.back()}>Go Back</button>
+        <label> Title</label>
         <input
-        placeholder="Title"
+          placeholder="Title"
           type="text"
           onChange={(e) => {
             setTitle(e.target.value);
           }}
         />
+        <label> Content</label>
         <textarea
           placeholder="Content"
           rows={10}

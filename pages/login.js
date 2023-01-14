@@ -9,7 +9,6 @@ export default function Login() {
 
   const loginWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
-      alert("ok");
       localStorage.setItem("isAuth", true);
       router.push("/create");
     });
@@ -20,7 +19,7 @@ export default function Login() {
       <section className={styles.login}>
         <Image
           className={styles.decoLogo}
-          src="Logo.svg"
+          src="logo.svg"
           alt="Logo of Cinema Monkeys"
           width={300}
           height={300}

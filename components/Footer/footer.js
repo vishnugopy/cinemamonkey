@@ -22,9 +22,6 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footerDiv}>
         <p>&copy; CINEMA MONKEY 2023</p>
-        <button onClick={switchTheme} >
-        {theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      </button>
       </div>
     </footer>
   );

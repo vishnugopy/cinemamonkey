@@ -16,16 +16,6 @@ export default function Header() {
           height={60}
         />
       </Link>
-
-      <Link href={"/login"}>
-      <Image
-        className={styles.loginButton}
-          src="profile.svg" 
-          alt="Profile of Cinema Monkeys"
-          width={50}
-          height={50}
-        />
-      </Link>
         </div>
      
     </header>
