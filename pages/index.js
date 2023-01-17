@@ -2,8 +2,6 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
-
-
 import Header from "../components/Header/header";
 import Footer from "../components/Footer/footer";
 import styles from "../styles/home.module.css";
