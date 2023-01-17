@@ -44,7 +44,7 @@ export default function Home() {
                   <h2>{post.title}</h2>
                   <div className={styles.author}>
                     <p>{post.author.name}</p>
-                    <p>12/01/2023</p>
+                    <p>{post.date}</p>
                   </div>
                 </div>
               </Link>
