@@ -10,10 +10,9 @@ export default function NewsPage() {
   const router = useRouter();
   const { id } = router.query;
 
-  const docRef = doc(db, "posts", id);
-  console.log(docRef);
   useEffect(() => {
     const getAPosts = async () => {
+      const docRef = doc(db, "posts", id);
       try {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
@@ -36,7 +35,7 @@ export default function NewsPage() {
         <h1>{article.title ? article.title.stringValue : ""}</h1>
         <p>{article.content ? article.content.stringValue : ""}</p>
 
-        <div className={styles.source}>
+        {/* <div className={styles.source}>
           <h3>Sources</h3>
           <ul className={styles.links}>
           <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
@@ -44,12 +43,10 @@ export default function NewsPage() {
           <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
           <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
         
-            {/* {JSON.stringify(article.links)} */}
-            {/* {article.links.arrayValue.values.map((link, index) => {
-              return <li key={index}>{link}</li>;
-            })} */}
+            {JSON.stringify(article.links)} 
+         
           </ul>
-        </div>
+        </div> */}
 
         <button onClick={() => router.back()}>Go Back</button>
       </section>
