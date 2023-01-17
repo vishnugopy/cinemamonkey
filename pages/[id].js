@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import styles from "../styles/news.module.css";
+import styles from "../styles/news.module.scss";
 import { db } from "./api/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -36,9 +36,11 @@ export default function NewsPage() {
         <h1>{article.title ? article.title.stringValue : ""}</h1>
         <p>{article.content ? article.content.stringValue : ""}</p>
 
-        <div>
-          <h2>Sources</h2>
+        <div className={styles.source}>
+          <h3>Sources</h3>
           <ul className={styles.links}>
+          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
+        
             {/* {JSON.stringify(article.links)} */}
             {/* {article.links.arrayValue.values.map((link, index) => {
               return <li key={index}>{link}</li>;

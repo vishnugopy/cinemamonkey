@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../styles/create.module.css";
+import styles from "../styles/create.module.scss";
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "./api/firebase";
 import { useRouter } from "next/router";

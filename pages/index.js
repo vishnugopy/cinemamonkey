@@ -4,7 +4,7 @@ import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
 import Header from "../components/Header/header";
 import Footer from "../components/Footer/footer";
-import styles from "../styles/home.module.css";
+import styles from "../styles/home.module.scss";
 import Link from "next/link";
 import { db } from "./api/firebase";
 

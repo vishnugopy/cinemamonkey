@@ -1,4 +1,4 @@
-import styles from "../styles/create.module.css";
+import styles from "../styles/create.module.scss";
 import { auth, provider } from "./api/firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/router";
