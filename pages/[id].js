@@ -40,6 +40,9 @@ export default function NewsPage() {
           <h3>Sources</h3>
           <ul className={styles.links}>
           <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
+          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
+          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
+          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
         
             {/* {JSON.stringify(article.links)} */}
             {/* {article.links.arrayValue.values.map((link, index) => {
