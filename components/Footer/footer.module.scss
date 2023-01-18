@@ -29,5 +29,17 @@
   flex-direction: column;
   gap: 0.5rem;
 
+  li a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover{
+      color: var( --accent-color);
+      transition: all 0.05s;
+    }
+  }
+
 }
 
