@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Header from "../components/Header/header";
-import Footer from "../components/Footer/footer";
-import styles from "../styles/home.module.css";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getDocs } from "firebase/firestore";
 import { collection } from "firebase/firestore";
+import Header from "../components/Header/header";
+import Footer from "../components/Footer/footer";
+import styles from "../styles/home.module.scss";
+import Link from "next/link";
 import { db } from "./api/firebase";
 
 export default function Home() {
@@ -35,25 +35,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className={styles.main} >
+      <main className={styles.main}>
         <div className={styles.container}>
           {postsList.map((post) => {
             return (
-              <Link  key={post.id} href={`/${post.id}`} >
+              <Link key={post.id} href={`/${post.id}`}>
                 <div className={styles.cards}>
-                <h2>{post.title}</h2>
-                <div className={styles.author}>
-                  <p>{post.author.name}</p>
-                  <p>12/01/2023</p>
+                  <h2>{post.title}</h2>
+                  <div className={styles.author}>
+                    <p>{post.author.name}</p>
+                    <p>{post.date}</p>
+                  </div>
                 </div>
-                </div>
-                
               </Link>
             );
           })}
         </div>
       </main>
-        <Footer/>
+      <Footer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../styles/create.module.css";
+import styles from "../styles/create.module.scss";
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "./api/firebase";
 import { useRouter } from "next/router";
@@ -7,9 +7,14 @@ import { useRouter } from "next/router";
 export default function CreatePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [ link , setLink] = useState("");
-  const [ links , setLinks] = useState([])
+  const [link, setLink] = useState("");
+  const [links, setLinks] = useState([]);
   const router = useRouter();
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let currentDate = `${day}-${month}-${year}`;
 
   console.log(links);
 
@@ -19,7 +24,8 @@ export default function CreatePage() {
     await addDoc(postCollectionref, {
       title: title,
       content: content,
-      links : links,
+      links: links,
+      date: currentDate,
       author: {
         name: auth.currentUser.displayName,
         id: auth.currentUser.uid,
@@ -30,7 +36,7 @@ export default function CreatePage() {
   const AddToLink = () => {
     links.push(link);
     setLink("");
-  }
+  };
 
   return (
     <main className={styles.main}>
@@ -61,21 +67,16 @@ export default function CreatePage() {
             setLink(e.target.value);
           }}
         />
-         <ul className={styles.links}>
-        {
-          links.map((link, index) => {
-            return (
-              <li key={index}>
-                {link}
-              </li>
-           );
+        <ul className={styles.links}>
+          {links.map((link, index) => {
+            return <li key={index}>{link}</li>;
           })}
           
         </ul>
-         <button className="post" onClick={AddToLink}>
+        <button className="post" onClick={AddToLink}>
           Add Link
         </button>
-       
+
         <button className="post" onClick={CreatePost}>
           Post
         </button>
