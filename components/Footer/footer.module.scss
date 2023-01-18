@@ -1,16 +1,45 @@
 .footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 0;
-    border-top:0.5px solid  var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  border-top:0.5px solid  var(--black);
 }
 
 
 .footerDiv{
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+
+.footerBottom{
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footList ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover{
+      color: var( --accent-color);
+      transition: all 0.05s;
+    }
+  }
+
+}
+

@@ -71,6 +71,7 @@ export default function CreatePage() {
           {links.map((link, index) => {
             return <li key={index}>{link}</li>;
           })}
+          
         </ul>
         <button className="post" onClick={AddToLink}>
           Add Link
