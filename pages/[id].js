@@ -9,9 +9,9 @@ export default function NewsPage() {
   const [article, setArticle] = useState([]);
   const router = useRouter();
   const { id } = router.query;
-  const docRef = doc(db, "posts", id);
-
+  
   useEffect(() => {
+    const docRef = doc(db, "posts", id);
     const getAPosts = async () => {
       try {
         const docSnap = await getDoc(docRef);
