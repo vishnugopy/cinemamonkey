@@ -1,32 +1,27 @@
-import { useRouter } from "next/router";
 import styles from "../styles/news.module.scss";
-import { db } from "./api/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { db } from "./api/firebase";
+import { useRouter } from "next/router";
 
 export default function NewsPage() {
   const [article, setArticle] = useState([]);
   console.log(article);
   const router = useRouter();
-  const { id } = router.query;
-
+  const { id} = router.query;
+  const docRef = doc(db, "posts", id);
+  
   useEffect(() => {
-    const getAPosts = async () => {
-      const docRef = doc(db, "posts", id);
-      try {
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          console.log(docSnap.data());
-          setArticle(docSnap._document.data.value.mapValue.fields);
-        } else {
-          console.log("Document does not exist");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    // const getAPosts = async () => {
+    //   try {
+    //     const docSnap = await getDoc(docRef);
+    //     setArticle(docSnap._document.data.value.mapValue.fields);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
 
-    getAPosts();
+    // getAPosts();
   }, []);
 
   return (
