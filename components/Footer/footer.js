@@ -25,8 +25,8 @@ export default function Footer() {
       <div className={styles.footerDiv}>
         <p>&copy; CINEMA MONKEY 2023</p>
 
-        <div className={styles.footerBottom}>
-          <div className={styles.footList}>
+         <div className={styles.footerBottom}>
+        {/*  <div className={styles.footList}>
             <ul>
               <li>
                 <a href="About">About</a>
@@ -41,31 +41,29 @@ export default function Footer() {
                 <a href="Contact">Contact</a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <div className={styles.footList}>
             <ul>
               <li>
-                <a href="https://nextjs.org" target={"_blank"}>
+                <a href="https://www.instagram.com/cinema_monkeys/" target={"_blank"}>
                   <BsFacebook />
                   <span> Facebook</span>
                 </a>
               </li>
               <li>
                 <a href="https://twitter.com/cinema_monkey" target={"_blank"}>
-                  {" "}
                   <BsTwitter /> <span> Twitter</span>
                 </a>
               </li>
               <li>
-                <a href="https://nextjs.org" target={"_blank"}>
+                <a href="https://www.instagram.com/cinema_monkeys/" target={"_blank"}>
                   <BsInstagram/>
                   <span> Instagram</span>
                 </a>
               </li>
               <li>
-                <a href="https://nextjs.org" target={"_blank"}>
-                  {" "}
+                <a href="mailto:cinemamonkey10@gmail.com" target={"_blank"}>
                   <SiMinutemailer /> <span> Mail</span>
                 </a>
               </li>

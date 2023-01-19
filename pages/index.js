@@ -48,7 +48,6 @@ export default function Home() {
                 <div className={styles.cards}>
                   <h2>{post.title}</h2>
                   <div className={styles.author}>
-                    <p>{post.author.name}</p>
                     <p>{post.date}</p>
                   </div>
                 </div>
