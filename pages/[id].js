@@ -1,26 +1,21 @@
-import { useRouter } from "next/router";
 import styles from "../styles/news.module.scss";
-import { db } from "./api/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { db } from "./api/firebase";
+import { useRouter } from "next/router";
+import Header from "../components/Header/header";
 
 export default function NewsPage() {
   const [article, setArticle] = useState([]);
-  console.log(article);
   const router = useRouter();
   const { id } = router.query;
+  const docRef = doc(db, "posts", id);
 
   useEffect(() => {
     const getAPosts = async () => {
-      const docRef = doc(db, "posts", id);
       try {
         const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          console.log(docSnap.data());
-          setArticle(docSnap._document.data.value.mapValue.fields);
-        } else {
-          console.log("Document does not exist");
-        }
+        setArticle(docSnap._document.data.value.mapValue.fields);
       } catch (error) {
         console.log(error);
       }
@@ -30,26 +25,35 @@ export default function NewsPage() {
   }, []);
 
   return (
-    <main className={styles.main}>
-      <section className={styles.news}>
-        <h1>{article.title ? article.title.stringValue : ""}</h1>
-        <p>{article.content ? article.content.stringValue : ""}</p>
+    <>
+      <Header />
+      <main className={styles.main}>
+        <section className={styles.news}>
+          {/* <img src={article.image && article.image.stringValue} alt="kijbd"></img> */}
+          <h1>{article.title ? article.title.stringValue : ""}</h1>
+          <p>{article.content ? article.content.stringValue : ""}</p>
 
-        {/* <div className={styles.source}>
-          <h3>Sources</h3>
-          <ul className={styles.links}>
-          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
-          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
-          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
-          <li> <a href="https://nextjs.org" target={"_blank"}>Next.js!</a></li>
-        
-            {JSON.stringify(article.links)} 
-         
-          </ul>
-        </div> */}
-
-        <button onClick={() => router.back()}>Go Back</button>
-      </section>
-    </main>
+          {article.links ? (
+            <div className={styles.source}>
+              <ul className={styles.links}>
+                {article.links &&
+                  article.links.arrayValue.values.map((link, index) => {
+                    return (
+                      <li key={index}>
+                        <a href={link.stringValue} target={"_blank"}>
+                          {link.stringValue}
+                        </a>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          ) : (
+            ""
+          )}
+          <button onClick={() => router.back()}>Go Back</button>
+        </section>
+      </main>
+    </>
   );
 }

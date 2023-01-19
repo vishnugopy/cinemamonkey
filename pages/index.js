@@ -33,8 +33,12 @@ export default function Home() {
         <meta name="description" content="Cinema Monkeys" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1294077694838733"
-     crossorigin="anonymous"></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1294077694838733"
+          crossOrigin="anonymous"
+        ></script>
+
       </Head>
       <Header />
       <main className={styles.main}>
@@ -45,7 +49,6 @@ export default function Home() {
                 <div className={styles.cards}>
                   <h2>{post.title}</h2>
                   <div className={styles.author}>
-                    <p>{post.author.name}</p>
                     <p>{post.date}</p>
                   </div>
                 </div>
