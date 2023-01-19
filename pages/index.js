@@ -38,6 +38,7 @@ export default function Home() {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1294077694838733"
           crossOrigin="anonymous"
         ></script>
+
       </Head>
       <Header />
       <main className={styles.main}>
