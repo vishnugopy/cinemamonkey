@@ -9,15 +9,13 @@ export default function CreatePage() {
   const [content, setContent] = useState("");
   const [link, setLink] = useState("");
   const [links, setLinks] = useState([]);
+  const [image, setImage] = useState([]);
   const router = useRouter();
   const date = new Date();
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
   let currentDate = `${day}-${month}-${year}`;
-
-  console.log(links);
-
   const postCollectionref = collection(db, "posts");
 
   const CreatePost = async () => {
@@ -26,6 +24,7 @@ export default function CreatePage() {
       content: content,
       links: links,
       date: currentDate,
+      image: image,
       author: {
         name: auth.currentUser.displayName,
         id: auth.currentUser.uid,
@@ -34,8 +33,24 @@ export default function CreatePage() {
   };
 
   const AddToLink = () => {
-    links.push(link);
+    setLinks((links) => [...links, link]);
     setLink("");
+  };
+
+  const ImageHandler = (e) => {
+    let counter = 0;
+    const files = e.target.files;
+    console.log(files);
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = e.target.result;
+       const clean =  data.replace('data:', '').replace(/^.+,/, '')
+        setImage(clean);
+        counter++;
+      };
+      reader.readAsDataURL(files[i]);
+    }
   };
 
   return (
@@ -58,6 +73,8 @@ export default function CreatePage() {
             setContent(e.target.value);
           }}
         />
+        <label> Image</label>
+        <input type="file" accept="image/jpeg" onChange={ImageHandler} />
         <label>Link</label>
         <input
           placeholder="Link"
@@ -71,7 +88,6 @@ export default function CreatePage() {
           {links.map((link, index) => {
             return <li key={index}>{link}</li>;
           })}
-          
         </ul>
         <button className="post" onClick={AddToLink}>
           Add Link
