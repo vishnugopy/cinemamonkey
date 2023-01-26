@@ -9,9 +9,11 @@ export default function NewsPage() {
   const [article, setArticle] = useState([]);
   const router = useRouter();
   const { id } = router.query;
+
   
   useEffect(() => {
     const docRef = doc(db, "posts", id);
+    const s = document.createElement("script");
     const getAPosts = async () => {
       try {
         const docSnap = await getDoc(docRef);
@@ -20,7 +22,9 @@ export default function NewsPage() {
         console.log(error);
       }
     };
-
+    s.setAttribute("src", "https://platform.twitter.com/widgets.js");
+    s.setAttribute("async", "true");
+    document.head.appendChild(s);
     getAPosts();
   }, []);
 
@@ -38,16 +42,33 @@ export default function NewsPage() {
               <ul className={styles.links}>
                 {article.links &&
                   article.links.arrayValue.values.map((link, index) => {
+
+                    let url = link.stringValue;
+                    const array = url.split("/");
+                    let utubeId="";
+                    let tweetUrl ="";
+                    if(array[2]= "youtu.be"){
+                      utubeId = array[3]
+                    }
+                    else if(array[2]= "twitter.com"){
+                      tweetUrl =link.stringValue;
+                    }
+              
                     return (
-                      <li >
-                        <blockquote class="twitter-tweet">
-                        <a href={link.stringValue} target={"_blank"}>
-                          {link.stringValue}
-                        </a>
+                      <ul>
+                        <li >
+                          <blockquote className="twitter-tweet">
+                            <a href={link.stringValue} ></a>
                           </blockquote>
-                          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                      </li>
-                       
+                          <script  src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>    
+                        </li>
+                        <li>
+                          <iframe  width="640" height="390"
+                            src={"http://www.youtube.com/embed/"+utubeId}
+                            frameborder="0">
+                          </iframe>
+                        </li>
+                      </ul>
                     );
                   })}
               </ul>
