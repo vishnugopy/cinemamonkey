@@ -11,37 +11,12 @@ export default function NewsPage() {
   const query = router.query;
   const id = query.id;
 
-  const LinkFrame = (props) => {
-    console.log(props);
-    let domain = new URL(props);
-    domain = domain.hostname.replace("www.", "");
-    return (
-      <>
-        {domain == "twitter.com" ? (
-          <>
-            <blockquote className="twitter-tweet">
-              <a href={props}></a>
-            </blockquote>
-            <script
-              src="https://platform.twitter.com/widgets.js"
-              charset="utf-8"
-            ></script>
-          </>
-        ) : domain == "youtube.be" ? (
-          <iframe width="640" height="390" src={props} frameborder="0"></iframe>
-        ) : (
-          ""
-        )}
-      </>
-    );
-  };
-
-useEffect(() => {
+  useEffect(() => {
     const s = document.createElement("script");
     s.setAttribute("src", "https://platform.twitter.com/widgets.js");
     s.setAttribute("async", "true");
     document.head.appendChild(s);
-  }, []);
+  }, [article]);
 
   useEffect(() => {
     const getAPosts = async () => {
@@ -82,22 +57,26 @@ useEffect(() => {
                       <>
                         {domain == "twitter.com" ? (
                           <>
-                            
                             <blockquote key={index} className="twitter-tweet">
-                              <a href={link.stringValue}>sfdsds</a>
+                              <a href={link.stringValue}></a>
                             </blockquote>
                             <script src="https://platform.twitter.com/widgets.js"></script>
                           </>
                         ) : domain == "youtu.be" ? (
                           <iframe
                             key={index}
-                            width="640"
-                            height="390"
-                            src={link.stringValue}
-                            frameborder="0"
-                          ></iframe>
+                            src={`https://www.youtube.com/embed/${link.stringValue.split(
+                              "="
+                            )}[1]&autoplay=false`}
+                            controls
+                            allowfullscreen
+                          />
                         ) : (
-                          <a href={link.stringValue} target={"_blank"}>
+                          <a
+                            className={styles.sharedLink}
+                            href={link.stringValue}
+                            target={"_blank"}
+                          >
                             {link.stringValue}
                           </a>
                         )}
