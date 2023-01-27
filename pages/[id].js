@@ -26,6 +26,7 @@ export default function NewsPage() {
         try {
           const docSnap = await getDoc(docRef);
           setArticle(docSnap._document.data.value.mapValue.fields);
+          console.log(docSnap._document.data.value.mapValue.fields);
         } catch (error) {
           console.log(error);
         }
@@ -40,14 +41,14 @@ export default function NewsPage() {
       <Header />
       <main className={styles.main}>
         <section className={styles.news}>
-        <button onClick={() => router.back()}>Go Back</button>
+          <button onClick={() => router.back()}>Go Back</button>
           <h1>{article.title ? article.title.stringValue : ""}</h1>
           <p>{article.content ? article.content.stringValue : ""}</p>
 
-          {article.links ? (
+          {article.links && (
             <div className={styles.source}>
               <div className={styles.links}>
-                {article.links &&
+                { JSON.stringify(article.links.arrayValue) != '{}'   &&
                   article.links.arrayValue.values.map((link, index) => {
                     console.log(link);
                     let domain = new URL(link.stringValue);
@@ -85,10 +86,7 @@ export default function NewsPage() {
                   })}
               </div>
             </div>
-          ) : (
-            ""
           )}
-        
         </section>
       </main>
     </>
