@@ -19,17 +19,17 @@
 }
 
 .news button {
-  letter-spacing: 0.7rem;
-  width: 100%;
-  font-size: 1.5rem;
+  display: block;
+  letter-spacing: 0.1rem;
+  width: 10rem;
   padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  border-radius: 25px;
   outline: none;
-  background: var(--accent-color);
-  color: white;
-  border: none;
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
   cursor: pointer;
+  margin: 0rem 0rem 1rem auto;
 }
 
 .source {
@@ -55,6 +55,7 @@
 
 @media (max-width: 700px) {
   .main {
+    width: 95%;
     padding: 5rem 1rem;
   }
 

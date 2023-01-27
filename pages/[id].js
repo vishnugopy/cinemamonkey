@@ -40,7 +40,7 @@ export default function NewsPage() {
       <Header />
       <main className={styles.main}>
         <section className={styles.news}>
-          {/* <img src={article.image && article.image.stringValue} alt="kijbd"></img> */}
+        <button onClick={() => router.back()}>Go Back</button>
           <h1>{article.title ? article.title.stringValue : ""}</h1>
           <p>{article.content ? article.content.stringValue : ""}</p>
 
@@ -88,7 +88,7 @@ export default function NewsPage() {
           ) : (
             ""
           )}
-          <button onClick={() => router.back()}>Go Back</button>
+        
         </section>
       </main>
     </>
