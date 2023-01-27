@@ -1,5 +1,5 @@
-import styles from "../styles/news.module.scss";
 import { doc, getDoc } from "firebase/firestore";
+import styles from "../styles/news.module.scss";
 import { useEffect, useState } from "react";
 import { db } from "./api/firebase";
 import { useRouter } from "next/router";
@@ -8,21 +8,25 @@ import Header from "../components/Header/header";
 export default function NewsPage() {
   const [article, setArticle] = useState([]);
   const router = useRouter();
-  const { id } = router.query;
-  
+  const query = router.query;
+  const id = query.id;
+
   useEffect(() => {
-    const docRef = doc(db, "posts", id);
     const getAPosts = async () => {
-      try {
+      if (id) {
+        const docRef = doc(db, "posts", id);
         const docSnap = await getDoc(docRef);
-        setArticle(docSnap._document.data.value.mapValue.fields);
-      } catch (error) {
-        console.log(error);
+        try {
+          const docSnap = await getDoc(docRef);
+          setArticle(docSnap._document.data.value.mapValue.fields);
+        } catch (error) {
+          console.log(error);
+        }
       }
     };
 
     getAPosts();
-  }, []);
+  }, [id]);
 
   return (
     <>
