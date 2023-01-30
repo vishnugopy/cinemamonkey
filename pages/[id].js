@@ -42,34 +42,58 @@ export default function NewsPage() {
               <ul className={styles.links}>
                 {article.links &&
                   article.links.arrayValue.values.map((link, index) => {
-
-                    let url = link.stringValue;
-                    const array = url.split("/");
+                    
+                    let url = article.links.arrayValue.values;
+                    const arrayLinks = [url[0],url[1]]
                     let utubeId="";
                     let tweetUrl ="";
-                    if(array[2]= "youtu.be"){
-                      utubeId = array[3]
+                    console.log(arrayLinks.length);
+                    if(arrayLinks.length>1){
+                      arrayLinks.forEach(element => {
+                        const array = element.stringValue.split("/");
+                        if(array[2]=="youtu.be"){
+                          utubeId = array[3]
+                        }
+  
+                        else if(array[2]= "twitter.com"){
+                          tweetUrl = element
+                        }
+                  
+                      });
                     }
-                    else if(array[2]= "twitter.com"){
-                      tweetUrl =link.stringValue;
+                    
+                    if(!utubeId){
+                      return(<li >
+                        <blockquote className="twitter-tweet">
+                          <a href={tweetUrl.stringValue} ></a>
+                        </blockquote>
+                        <script  src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>    
+                      </li>);
                     }
-              
-                    return (
-                      <ul>
-                        <li >
-                          <blockquote className="twitter-tweet">
-                            <a href={link.stringValue} ></a>
-                          </blockquote>
-                          <script  src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>    
-                        </li>
-                        <li>
-                          <iframe  width="640" height="390"
-                            src={"http://www.youtube.com/embed/"+utubeId}
-                            frameborder="0">
-                          </iframe>
-                        </li>
-                      </ul>
-                    );
+                    else{
+                      return(<li>
+                        <iframe  width="640" height="390"
+                          src={"http://www.youtube.com/embed/"+utubeId}
+                          frameborder="0">
+                        </iframe>
+                      </li>);
+                    }
+                    // return (
+                    //   <ul>
+                    //     <li >
+                    //       <blockquote className="twitter-tweet">
+                    //         <a href={tweetUrl} ></a>
+                    //       </blockquote>
+                    //       <script  src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>    
+                    //     </li>
+                    //     <li>
+                    //       <iframe  width="640" height="390"
+                    //         src={"http://www.youtube.com/embed/"+utubeId}
+                    //         frameborder="0">
+                    //       </iframe>
+                    //     </li>
+                    //   </ul>
+                    // );
                   })}
               </ul>
             </div>
