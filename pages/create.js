@@ -37,26 +37,12 @@ export default function CreatePage() {
     setLink("");
   };
 
-  const ImageHandler = (e) => {
-    let counter = 0;
-    const files = e.target.files;
-    console.log(files);
-    for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const data = e.target.result;
-       const clean =  data.replace('data:', '').replace(/^.+,/, '')
-        setImage(clean);
-        counter++;
-      };
-      reader.readAsDataURL(files[i]);
-    }
-  };
+ 
 
   return (
     <main className={styles.main}>
       <section className={styles.form}>
-        <button onClick={() => router.back()}>Go Back</button>
+        <button  className={styles.goBackButton}  onClick={() => router.back()}>Go Back</button>
         <label> Title</label>
         <input
           placeholder="Title"
@@ -73,8 +59,6 @@ export default function CreatePage() {
             setContent(e.target.value);
           }}
         />
-        <label> Image</label>
-        <input type="file" accept="image/jpeg" onChange={ImageHandler} />
         <label>Link</label>
         <input
           placeholder="Link"
@@ -89,11 +73,11 @@ export default function CreatePage() {
             return <li key={index}>{link}</li>;
           })}
         </ul>
-        <button className="post" onClick={AddToLink}>
+        <button className={styles.formButton} onClick={AddToLink}>
           Add Link
         </button>
 
-        <button className="post" onClick={CreatePost}>
+        <button className={styles.formButton} onClick={CreatePost}>
           Post
         </button>
       </section>

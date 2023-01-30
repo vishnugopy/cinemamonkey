@@ -1,5 +1,5 @@
-import styles from "../styles/news.module.scss";
 import { doc, getDoc } from "firebase/firestore";
+import styles from "../styles/news.module.scss";
 import { useEffect, useState } from "react";
 import { db } from "./api/firebase";
 import { useRouter } from "next/router";
@@ -8,99 +8,87 @@ import Header from "../components/Header/header";
 export default function NewsPage() {
   const [article, setArticle] = useState([]);
   const router = useRouter();
-  const { id } = router.query;
+  const query = router.query;
+  const id = query.id;
 
-  
   useEffect(() => {
-    const docRef = doc(db, "posts", id);
     const s = document.createElement("script");
-    const getAPosts = async () => {
-      try {
-        const docSnap = await getDoc(docRef);
-        setArticle(docSnap._document.data.value.mapValue.fields);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     s.setAttribute("src", "https://platform.twitter.com/widgets.js");
     s.setAttribute("async", "true");
     document.head.appendChild(s);
+  }, [article]);
+
+  useEffect(() => {
+    const getAPosts = async () => {
+      if (id) {
+        const docRef = doc(db, "posts", id);
+        const docSnap = await getDoc(docRef);
+        try {
+          const docSnap = await getDoc(docRef);
+          setArticle(docSnap._document.data.value.mapValue.fields);
+          console.log(docSnap._document.data.value.mapValue.fields);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
     getAPosts();
-  }, []);
+  }, [id]);
 
   return (
     <>
       <Header />
       <main className={styles.main}>
         <section className={styles.news}>
-          {/* <img src={article.image && article.image.stringValue} alt="kijbd"></img> */}
+          <button onClick={() => router.back()}>Go Back</button>
           <h1>{article.title ? article.title.stringValue : ""}</h1>
           <p>{article.content ? article.content.stringValue : ""}</p>
 
-          {article.links ? (
+          {article.links && (
             <div className={styles.source}>
-              <ul className={styles.links}>
-                {article.links &&
+              <div className={styles.links}>
+                {JSON.stringify(article.links.arrayValue) != "{}" &&
                   article.links.arrayValue.values.map((link, index) => {
-                    
-                    let url = article.links.arrayValue.values;
-                    const arrayLinks = [url[0],url[1]]
-                    let utubeId="";
-                    let tweetUrl ="";
-                    console.log(arrayLinks.length);
-                    if(arrayLinks.length>1){
-                      arrayLinks.forEach(element => {
-                        const array = element.stringValue.split("/");
-                        if(array[2]=="youtu.be"){
-                          utubeId = array[3]
-                        }
-  
-                        else if(array[2]= "twitter.com"){
-                          tweetUrl = element
-                        }
-                  
-                      });
-                    }
-                    
-                    if(!utubeId){
-                      return(<li >
-                        <blockquote className="twitter-tweet">
-                          <a href={tweetUrl.stringValue} ></a>
-                        </blockquote>
-                        <script  src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>    
-                      </li>);
-                    }
-                    else{
-                      return(<li>
-                        <iframe  width="640" height="390"
-                          src={"http://www.youtube.com/embed/"+utubeId}
-                          frameborder="0">
-                        </iframe>
-                      </li>);
-                    }
-                    // return (
-                    //   <ul>
-                    //     <li >
-                    //       <blockquote className="twitter-tweet">
-                    //         <a href={tweetUrl} ></a>
-                    //       </blockquote>
-                    //       <script  src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>    
-                    //     </li>
-                    //     <li>
-                    //       <iframe  width="640" height="390"
-                    //         src={"http://www.youtube.com/embed/"+utubeId}
-                    //         frameborder="0">
-                    //       </iframe>
-                    //     </li>
-                    //   </ul>
-                    // );
+                    let domain = new URL(link.stringValue);
+                    let utubeId = "";
+                    let array = link.stringValue.split("/");
+                    utubeId = array[3];
+                    domain = domain.hostname.replace("www.", "");
+                    console.log(utubeId);
+                    return (
+                      <>
+                        {domain == "twitter.com" ? (
+                          <>
+                            <blockquote key={index} className="twitter-tweet">
+                              <a href={link.stringValue}></a>
+                            </blockquote>
+                            <script src="https://platform.twitter.com/widgets.js"></script>
+                          </>
+                        ) : domain == "youtu.be" ? (
+                          <iframe
+                            key={index}
+                            width="640"
+                            height="390"
+                            src={"http://www.youtube.com/embed/"+utubeId}
+                            controls
+                            allowfullscreen
+                          />
+                        ) : (
+                          <a
+                            className={styles.sharedLink}
+                            href={link.stringValue}
+                            target={"_blank"}
+                          >
+                            {link.stringValue}
+                          </a>
+                        )}
+                      </>
+                    );
                   })}
-              </ul>
+              </div>
             </div>
-          ) : (
-            ""
           )}
-          <button onClick={() => router.back()}>Go Back</button>
         </section>
       </main>
     </>

@@ -25,7 +25,20 @@
   border: 2px solid var(--accent-color);
 }
 
-.form button {
+.goBackButton{
+  letter-spacing: 0.1rem;
+  width: 10rem;
+  padding: 10px;
+  border-radius: 25px;
+  outline: none;
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black);
+  cursor: pointer;
+  margin: 0rem 0rem 1rem auto;
+}
+
+.formButton {
   letter-spacing: 0.7rem;
   width: 100%;
   font-size: 1.5rem;
