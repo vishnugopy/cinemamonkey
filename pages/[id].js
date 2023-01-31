@@ -48,12 +48,14 @@ export default function NewsPage() {
           {article.links && (
             <div className={styles.source}>
               <div className={styles.links}>
-                { JSON.stringify(article.links.arrayValue) != '{}'   &&
+                {JSON.stringify(article.links.arrayValue) != "{}" &&
                   article.links.arrayValue.values.map((link, index) => {
-                    console.log(link);
                     let domain = new URL(link.stringValue);
+                    let utubeId = "";
+                    let array = link.stringValue.split("/");
+                    utubeId = array[3];
                     domain = domain.hostname.replace("www.", "");
-                    console.log(domain);
+                    console.log(utubeId);
                     return (
                       <>
                         {domain == "twitter.com" ? (
@@ -66,9 +68,9 @@ export default function NewsPage() {
                         ) : domain == "youtu.be" ? (
                           <iframe
                             key={index}
-                            src={`https://www.youtube.com/embed/${link.stringValue.split(
-                              "="
-                            )}[1]&autoplay=false`}
+                            width="640"
+                            height="390"
+                            src={"http://www.youtube.com/embed/"+utubeId}
                             controls
                             allowfullscreen
                           />
