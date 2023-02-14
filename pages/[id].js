@@ -68,7 +68,7 @@ export default function NewsPage() {
                           <iframe
                           className={styles.iframe}
                             key={index}
-                            src={"http://www.youtube.com/embed/"+utubeId}
+                            src={"https://www.youtube.com/embed/"+utubeId}
                             controls
                             allowfullscreen
                           />
