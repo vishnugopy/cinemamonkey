@@ -55,7 +55,6 @@ export default function NewsPage() {
                     let array = link.stringValue.split("/");
                     utubeId = array[3];
                     domain = domain.hostname.replace("www.", "");
-                    console.log(utubeId);
                     return (
                       <>
                         {domain == "twitter.com" ? (
@@ -67,9 +66,8 @@ export default function NewsPage() {
                           </>
                         ) : domain == "youtu.be" ? (
                           <iframe
+                          className={styles.iframe}
                             key={index}
-                            width="640"
-                            height="390"
                             src={"http://www.youtube.com/embed/"+utubeId}
                             controls
                             allowfullscreen
