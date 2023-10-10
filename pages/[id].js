@@ -42,7 +42,22 @@ export default function NewsPage() {
       <Header />
       <Head>
         <title>{article.title ? article.title.stringValue : ""}</title>
-        <meta property="og:image" content="https://cinemamonkey.com/api/og" />
+        <meta
+          name="description"
+          content="Cinema Monkeys is first people based news channel for tamil cinema"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:url" content="https://cinemamonkey.net" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Cinema Monkey" />
+        <meta property="og:description" content="Cinema Monkeys" />
+        <meta property="og:image" content="https://cinemamonkey.net/api/og" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="cinemamonkey.net" />
+        <meta property="twitter:url" content="https://cinemamonkey.net" />
+        <meta name="twitter:title" content="Cinema Monkey" />
+        <meta name="twitter:description" content="Cinema Monkeys" />
+        <meta name="twitter:image" content="https://cinemamonkey.net/api/og" />
       </Head>
       <main className={styles.main}>
         <section className={styles.news}>
