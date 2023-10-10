@@ -20,6 +20,7 @@ export default function NewsPage() {
   }, [article]);
 
   useEffect(() => {
+    console.log(id);
     const getAPosts = async () => {
       if (id) {
         const docRef = doc(db, "posts", id);
@@ -76,10 +77,10 @@ export default function NewsPage() {
                     utubeId = array[3];
                     domain = domain.hostname.replace("www.", "");
                     return (
-                      <>
+                      <div key={index}>
                         {domain == "twitter.com" ? (
                           <>
-                            <blockquote key={index} className="twitter-tweet">
+                            <blockquote className="twitter-tweet">
                               <a href={link.stringValue}></a>
                             </blockquote>
                             <script src="https://platform.twitter.com/widgets.js"></script>
@@ -87,7 +88,6 @@ export default function NewsPage() {
                         ) : domain == "youtu.be" ? (
                           <iframe
                             className={styles.iframe}
-                            key={index}
                             src={"https://www.youtube.com/embed/" + utubeId}
                             controls
                             allowfullscreen
@@ -101,7 +101,7 @@ export default function NewsPage() {
                             {link.stringValue}
                           </a>
                         )}
-                      </>
+                      </div>
                     );
                   })}
               </div>
