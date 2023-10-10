@@ -66,6 +66,10 @@ export default function Home() {
             return (
               <Link key={post.id} href={`/${post.id}`}>
                 <div className={styles.cards}>
+                  <img
+                    src={`https://cinemamonkey.net/api/og?title="${post.title}"`}
+                    alt={post.title}
+                  />
                   <h2>{post.title}</h2>
                   <div className={styles.author}>
                     <p>{post.date}</p>
