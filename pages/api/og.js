@@ -20,10 +20,12 @@ export default async function handler(req) {
           justifyContent: "center",
           flexDirection: "column",
           flexWrap: "nowrap",
-          backgroundColor: "white",
+          backgroundColor: "black",
           backgroundImage:
             "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
           backgroundSize: "100px 100px",
+          fontSize: "60px",
+          color: "white",
         }}
       >
         {title}
