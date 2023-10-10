@@ -32,7 +32,12 @@ export default function Home() {
         <title>Cinema Monkey</title>
         <meta name="description" content="Cinema Monkeys" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
+        <meta property="og:image" content="https://cinemamonkey.com/api/og" />
+
         <link rel="icon" href="/favicon.ico" />
         <script
           async

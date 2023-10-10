@@ -42,7 +42,7 @@ export default function NewsPage() {
       <Header />
       <Head>
         <title>{article.title ? article.title.stringValue : ""}</title>
-        <meta property="og:image" content="http://cinemamonkey.com/api/og" />
+        <meta property="og:image" content="https://cinemamonkey.com/api/og" />
       </Head>
       <main className={styles.main}>
         <section className={styles.news}>
