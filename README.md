@@ -1,3 +1,3 @@
 ## Cinema Monkey
 
-[http://cinemamonkey.net](cinemamonkey.net)
+[https://cinemamonkey.net/](cinemamonkey.net)
