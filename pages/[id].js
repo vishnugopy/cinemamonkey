@@ -67,11 +67,24 @@ export default function NewsPage() {
         <meta property="twitter:domain" content="cinemamonkey.net" />
         <meta
           property="twitter:url"
-          content="https://cinemamonkey.net/api/og"
+          content={
+            article.title
+              ? "https://cinemamonkey.net/api/og?title=" +
+                article.title.stringValue
+              : "https://cinemamonkey.net/api/og"
+          }
         />
         <meta name="twitter:title" content="Cinema Monkey" />
         <meta name="twitter:description" content="Cinema Monkeys" />
-        <meta name="twitter:image" content="https://cinemamonkey.net/api/og" />
+        <meta
+          name="twitter:image"
+          content={
+            article.title
+              ? "https://cinemamonkey.net/api/og?title=" +
+                article.title.stringValue
+              : "https://cinemamonkey.net/api/og"
+          }
+        />
       </Head>
       <main className={styles.main}>
         <section className={styles.news}>
