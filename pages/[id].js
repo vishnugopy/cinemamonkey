@@ -3,6 +3,7 @@ import styles from "../styles/news.module.scss";
 import { useEffect, useState } from "react";
 import { db } from "./api/firebase";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Header from "../components/Header/header";
 
 export default function NewsPage() {
@@ -39,6 +40,10 @@ export default function NewsPage() {
   return (
     <>
       <Header />
+      <Head>
+        <title>{article.title ? article.title.stringValue : ""}</title>
+        <meta property="og:image" content="http://cinemamonkey.com/api/og" />
+      </Head>
       <main className={styles.main}>
         <section className={styles.news}>
           <button onClick={() => router.back()}>Go Back</button>
@@ -66,9 +71,9 @@ export default function NewsPage() {
                           </>
                         ) : domain == "youtu.be" ? (
                           <iframe
-                          className={styles.iframe}
+                            className={styles.iframe}
                             key={index}
-                            src={"https://www.youtube.com/embed/"+utubeId}
+                            src={"https://www.youtube.com/embed/" + utubeId}
                             controls
                             allowfullscreen
                           />
