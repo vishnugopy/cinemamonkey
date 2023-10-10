@@ -32,11 +32,23 @@ export default function Home() {
         <title>Cinema Monkey</title>
         <meta name="description" content="Cinema Monkeys" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Cinema Monkeys" />
+        <meta property="og:url" content="https://cinemamonkey.net" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Cinema Monkey" />
+        <meta property="og:description" content="Cinema Monkeys" />
+        <meta property="og:image" content="https://cinemamonkey.com/api/og" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="cinemamonkey.net" />
+        <meta property="twitter:url" content="https://cinemamonkey.net" />
+        <meta name="twitter:title" content="Cinema Monkey" />
+        <meta name="twitter:description" content="Cinema Monkeys" />
+        <meta name="twitter:image" content="https://cinemamonkey.com/api/og" />
+
         <meta
           http-equiv="Content-Security-Policy"
           content="upgrade-insecure-requests"
         />
-        <meta property="og:image" content="https://cinemamonkey.com/api/og" />
 
         <link rel="icon" href="/favicon.ico" />
         <script
