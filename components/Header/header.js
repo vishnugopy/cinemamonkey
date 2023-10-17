@@ -15,6 +15,8 @@ export default function Header() {
             height={60}
           />
         </Link>
+
+        <Link href={"/leo/leo"}>Leo Dass Font</Link>
       </div>
     </header>
   );

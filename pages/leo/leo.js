@@ -7,8 +7,16 @@ export default function Leo() {
 
   return (
     <main className={styles.main}>
-      <Header />
       <section className={styles.form}>
+        <button
+          className={styles.backbutton}
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          {" "}
+          Back
+        </button>
         <h1 className={styles.title}>Input your name here</h1>
         <input
           type="text"
@@ -21,7 +29,6 @@ export default function Leo() {
         <button
           className={styles.button}
           onClick={() => {
-            // on click download image generated in image tag
             const a = document.createElement("a");
             a.href = "/api/leoog?title=" + name;
             a.download = "leo.png";

@@ -29,6 +29,24 @@
     width: 100%;
     height: 100%;
   }
+
+  .button {
+    background: rgb(4, 104, 186);
+    border: none;
+    border-radius: 7px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .backbutton {
+    background: rgb(0, 0, 0);
+    border: none;
+    border-radius: 7px;
+    font-size: 1.2rem;
+    width: 100px;
+    margin: 10px 0 10px auto;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 700px) {

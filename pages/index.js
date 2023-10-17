@@ -34,6 +34,10 @@ export default function Home() {
           name="description"
           content="Cinema Monkeys is first people based news channel for tamil cinema"
         />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        ></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:url" content="https://cinemamonkey.net" />
         <meta property="og:type" content="website" />
