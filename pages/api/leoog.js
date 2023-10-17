@@ -12,6 +12,10 @@ export default async function handler(req) {
     new URL("../../fonts/Loutters.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
+  const imageData = await fetch(new URL("./bg.jpg", import.meta.url)).then(
+    (res) => res.arrayBuffer()
+  );
+
   return new ImageResponse(
     (
       <div
@@ -28,19 +32,31 @@ export default async function handler(req) {
           backgroundColor: "black",
           color: "yellow",
           fontWeight: "bold",
-          fontSize: "60px",
+          fontSize: "100px",
           textTransform: "capitalize",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundImage: `url(data:image/jpeg;base64,${Buffer.from(
+            imageData
+          ).toString("base64")})`,
         }}
       >
-        {title}
+        <p
+          style={{
+            transform: "rotate(-5deg)",
+          }}
+        >
+          {title}
+        </p>
       </div>
     ),
     {
       headers: {
         "Cache-Control": "s-maxage=0",
       },
-      width: 1200,
-      height: 630,
+      width: 1000,
+      height: 1000,
       fonts: [
         {
           name: "Loutters",
