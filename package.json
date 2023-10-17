@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/font": "^13.5.5",
     "@vercel/og": "^0.5.17",
     "dotenv": "^16.0.3",
     "firebase": "^9.15.0",
