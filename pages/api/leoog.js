@@ -36,6 +36,9 @@ export default async function handler(req) {
       </div>
     ),
     {
+      headers: {
+        "Cache-Control": "s-maxage=0",
+      },
       width: 1200,
       height: 630,
       fonts: [
