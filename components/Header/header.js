@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./header.module.scss";
-import "./logo.svg";
 
 export default function Header() {
   return (
@@ -9,7 +8,7 @@ export default function Header() {
         <Link href={"/"}>
           <img
             className={styles.logo}
-            src="./logo.svg"
+            src="cm.svg"
             alt="Logo of Cinema Monkeys"
             width={80}
             height={60}
