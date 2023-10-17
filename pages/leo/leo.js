@@ -1,5 +1,5 @@
 import styles from "./leo.module.scss";
-import Image from "next/image";
+import Header from "../../components/Header/header";
 import { useState } from "react";
 
 export default function Leo() {
@@ -7,6 +7,7 @@ export default function Leo() {
 
   return (
     <main className={styles.main}>
+      <Header />
       <section className={styles.form}>
         <h1 className={styles.title}>Input your name here</h1>
         <input
