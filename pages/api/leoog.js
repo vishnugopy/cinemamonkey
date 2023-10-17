@@ -7,11 +7,16 @@ export const config = {
 export default async function handler(req) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title") || "Leo Dass";
+  // Make sure the font exists in the specified path:
+  const fontData = await fetch(
+    new URL("../../fonts/Loutters.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
     (
       <div
         style={{
+          fontFamily: '"Loutters"',
           height: "100%",
           width: "100%",
           display: "flex",
@@ -33,6 +38,13 @@ export default async function handler(req) {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        {
+          name: "Loutters",
+          data: fontData,
+          style: "normal",
+        },
+      ],
     }
   );
 }

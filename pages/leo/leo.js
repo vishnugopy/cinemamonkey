@@ -22,7 +22,7 @@ export default function Leo() {
           onClick={() => {
             // on click download image generated in image tag
             const a = document.createElement("a");
-            a.href = "api/leoog?title=" + name;
+            a.href = "/api/leoog?title=" + name;
             a.download = "leo.png";
             a.click();
           }}
