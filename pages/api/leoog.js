@@ -1,13 +1,13 @@
 import { ImageResponse } from "@vercel/og";
 
 export const config = {
-  runtime: "edge",
+  runtime: "experimental-edge",
 };
 
 export default async function handler(req) {
   const { searchParams } = new URL(req.url);
   const title = searchParams.get("title") || "Leo Dass";
-  // Make sure the font exists in the specified path:
+
   const fontData = await fetch(
     new URL("../../fonts/Loutters.ttf", import.meta.url)
   ).then((res) => res.arrayBuffer());
