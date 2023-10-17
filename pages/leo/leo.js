@@ -1,5 +1,4 @@
 import styles from "./leo.module.scss";
-import Header from "../../components/Header/header";
 import { useState } from "react";
 
 export default function Leo() {
@@ -7,7 +6,6 @@ export default function Leo() {
 
   return (
     <>
-      <Header />
       <main className={styles.main}>
         <section className={styles.form}>
           <button
